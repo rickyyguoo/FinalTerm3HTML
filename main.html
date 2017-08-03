@@ -377,22 +377,10 @@
       <br>
       <div class="row">
         <div class="col-md-12 form-group">
-          <button onclick="tambahData1()" class="btn pull-right" type="submit">Send</button>
-          <button class="btn btn-primary" type="button" style="display: none" id="btnUpdate1">Update</button>
+          <button class="btn pull-right" type="submit">Send</button>
+         
         </div>
-          <table id="kontak1" class="table">
-        <thead>
-            <tr>
-                
-                <td>Name</td>
-                <td>Email</td>
-                <td>Comments</td>
-            </tr>
-
-        </thead>
-        <tbody>		
-        </tbody>
-        </table>
+        
       </div>
     </div>
   </div>
@@ -544,100 +532,6 @@ $(document).ready(function(){
 	</script>
     <script src="jquery-3.2.1.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script>
-        function newCol1(value) {
-            var element = document.createElement("td")
-            element.innerHTML = value
-            return element
-        }
 
-        function newRow1(name, email, comments) {
-			// tambahkan tr baru dan td baru
-			var tr = document.createElement("tr")
-			
-			tr.appendChild(newCol(name))
-			td = document.createElement("td")
-			tr.appendChild(newCol(email))
-			td = document.createElement("td")
-			tr.appendChild(newCol(comments))
-
-            // tambahkan tombol
-            td = document.createElement("td")
-            var edit = document.createElement("button")
-             edit.innerHTML = "Edit"
-            edit.setAttribute("class", "btn btn-default")          
-            td.appendChild(edit)
-            edit.onclick = function() { editData1(tr) }
-
-            var hapus = document.createElement("button")
-            hapus.innerHTML = "Hapus"
-            hapus.setAttribute("class", "btn btn-default")
-            td.appendChild(hapus)
-            hapus.onclick = function() { hapusData1(tr) }
-
-            tr.appendChild(td)
-
-            return tr
-        }
-
-        function hapusData1(element) {
-            if (confirm("Are you sure?"))
-                element.remove()
-           
-        }
-
-        function resetForm1() {
-            document.querySelector("form1").reset()
-            document.querySelector("#btnUpdate1").style.display = "none"
-            document.querySelector('#name').focus()
-        }
-
-        function editData1(element) {
-			var name= document.querySelector("#name")
-			var email = document.querySelector("#email")
-			var comments = document.querySelector('#comments')
-
-            children = element.querySelectorAll("td")
-             
-            name.value = children[0].innerHTML
-            email.value = children[1].innerHTML
-           comments.value = children[2].innerHTML
-
-            psw.focus()
-
-            var btnUpdate1 = document.querySelector("#btnUpdate1")
-            btnUpdate1.style.display = "inline"
-            btnUpdate1.onclick = function() { updateData1(element) }
-        }
-
-        function updateData1(element) {
-        	
-			var name= document.querySelector("#name").value
-			var email = document.querySelector("#email").value
-			var comments = document.querySelector('#comments').value
-
-            tr = newRow(name, email,comments)
-
-            table = document.querySelector("#kontak1")
-			table.querySelector("tbody").replaceChild(tr, element)
-
-            resetForm()
-        }
-
-		function tambahData1() {
-			// baca input
-			var name= document.querySelector("#name").value
-			var email = document.querySelector("#email").value
-			var comments = document.querySelector('#comments').value
-
-            tr = newRow(name, email, comments)
-			
-			// insert ke table
-			var table = document.querySelector("#kontak1")
-			table.querySelector("tbody").appendChild(tr)
-
-            resetForm1()
-		}
-	</script>
 </body>
 </html>
