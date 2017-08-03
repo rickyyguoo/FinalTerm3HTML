@@ -30,31 +30,7 @@
             <p></p>
           <a button class="btn btn-primary btn-block btn-lg btn-signin" href="main.html"  role="button" type="submit">To Main Page</button></a>
         
-        <p>Hello, {{hellonama}}</p>
-        <button v-on:click="clear">Clear</button>
-    </div>
-    <script type="text/javascript" src="vue.min.js"></script>
-    <script type="text/javascript">
-        var vue = new Vue({
-            el: '#app',
-            data: {
-                nama: ''
-            },
-            computed: {
-                hellonama: function() {
-                    if (this.nama === "")
-                        return "World"
-                                else
-                        return this.nama    
-                }
-            },
-            methods: {
-                clear: function() {
-                    this.nama = ""
-                }
-            }
-        })
-    </script>
+        
 
        
     </div>
