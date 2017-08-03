@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+<style type>
+    body {
+    background-image: url("assets/img/bokeh.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+</head>
+
+
+<body>
+
+<div id="app">
+    <div class="pull-middle">
+    <div class="login-card"><img src="assets/img/uph.png" class="profile-img-card">
+    <p class="profile-name-card"> </p>
+        <form class="form-signin"><span class="reauth-email"> </span>
+            <input class="form-control" type="name" required="" placeholder="Input Name" autofocus="" id="inputName" placeholder="Name" input type="text" v-model="nama">
+            <p></p>
+          <a button class="btn btn-primary btn-block btn-lg btn-signin" href="login1.html"  role="button" type="submit">To Main Page</button></a>
+        
+        <p>Hello, {{hellonama}}</p>
+        <button v-on:click="clear">Clear</button>
+    </div>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript">
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                nama: ''
+            },
+            computed: {
+                hellonama: function() {
+                    if (this.nama === "")
+                        return "World"
+                                else
+                        return this.nama    
+                }
+            },
+            methods: {
+                clear: function() {
+                    this.nama = ""
+                }
+            }
+        })
+    </script>
+
+       
+    </div>
+    </div>
+    
+
+        
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
