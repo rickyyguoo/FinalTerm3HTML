@@ -11,6 +11,14 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+   <style type="text/css">
+        @font-face {
+    font-family: 'Planet of the Apes';
+    src: url('../fonts/Planet_Of_The_Apes.ttf');
+}
+        h1 { font-family: 'Planet of the Apes', cursive }
+    </style>
   <style>
   body {
       font: 400 15px/1.8 Lato, sans-serif;
@@ -228,7 +236,7 @@
 <!-- Container (TOUR Section) -->
 <div id="Movie" class="bg-1">
   <div class="container">
-    <h3 class="text-center">Movie Information</h3>
+    <h1 class="text-center">Movie Information</h1>
     <p class="text-center">Here are the TOP Movies of the week !<br> Remember to book your tickets!</p>
     <ul class="list-group">
       <li class="list-group-item"> <a href="guardian.html" target="_blank">Guardians of the Galaxy Vol.2 <span class="label label-danger">click to view movie info!</span></li></a>
@@ -281,19 +289,49 @@
               <input type="number" class="form-control" id="psw" placeholder="How many?">
             </div>
             <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <label class="nama"><span class="glyphicon glyphicon-user"></span> Name</label>
+              <input type="text" class="form-control" id="nama" placeholder="Enter Name">
             </div>
-              <button type="submit" class="btn btn-block">Pay 
+             
+             <div class="form-group">
+              <label for="address"><span class="glyphicon glyphicon-home"></span> Address </label>
+              <input type="text" class="form-control" id="alamat" placeholder="Enter Address">
+            </div>
+            <div class="form-group">
+              <label for="phone"><span class="glyphicon glyphicon-earphone"></span> Phone Number </label>
+              <input type="number" class="form-control" id="telepon" placeholder="Enter Phone Number">
+            </div>
+            <div class="pull-right">
+            <button onclick="tambahData()" class="btn btn-primary" type="button">Enter            
                 <span class="glyphicon glyphicon-ok"></span>
               </button>
+              <button class="btn btn-primary" type="button" style="display: none" id="btnUpdate">Update
+              	<span class="glyphicon glyphicon-ok"></span>
+              </button>
+                <button class="btn btn-default" type="button" onclick="resetForm()">Cancel
+                	<span class="glyphicon glyphicon-remove"></span>
+                </button>
+                </div>
+               <table id="kontak" class="table">
+        <thead>
+            <tr>
+                <td>Tickets</td>
+                <td>Name</td>
+                <td>Address</td>
+                <td>Phone</td>
+            </tr>
+
+        </thead>
+        <tbody>		
+        </tbody>
+        </table>
           </form>
         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
             <span class="glyphicon glyphicon-remove"></span> Cancel
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -309,7 +347,7 @@
       <p>Drop a note.</p>
       <p><span class="glyphicon glyphicon-map-marker"></span>Medan , Sumatera Utara</p>
       <p><span class="glyphicon glyphicon-phone"></span>Phone: +6282272818822</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: rickyyguoo@mail.com</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: jorick@gmail.com</p>
     </div>
     <div class="col-md-8">
       <div class="row">
@@ -324,8 +362,22 @@
       <br>
       <div class="row">
         <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Send</button>
+          <button onclick="tambahData1()" class="btn pull-right" type="submit">Send</button>
+          <button class="btn btn-primary" type="button" style="display: none" id="btnUpdate1">Update</button>
         </div>
+          <table id="kontak1" class="table">
+        <thead>
+            <tr>
+                
+                <td>Name</td>
+                <td>Email</td>
+                <td>Comments</td>
+            </tr>
+
+        </thead>
+        <tbody>		
+        </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -343,6 +395,7 @@ Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
   <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a><br><br>
+   <p>Joshua 26454 16IS2</p> 
   <p>Ricky 26464 16IS2</p> 
 </footer>
 
@@ -376,6 +429,200 @@ $(document).ready(function(){
   });
 })
 </script>
+<script>
+        function newCol(value) {
+            var element = document.createElement("td")
+            element.innerHTML = value
+            return element
+        }
 
+        function newRow(psw, nama, alamat, telepon) {
+			// tambahkan tr baru dan td baru
+			var tr = document.createElement("tr")
+			tr.appendChild(newCol(psw))
+			td = document.createElement("td")
+			tr.appendChild(newCol(nama))
+			td = document.createElement("td")
+			tr.appendChild(newCol(alamat))
+			td = document.createElement("td")
+			tr.appendChild(newCol(telepon))
+
+            // tambahkan tombol
+            td = document.createElement("td")
+            var edit = document.createElement("button")
+             edit.innerHTML = "Edit"
+            edit.setAttribute("class", "btn btn-default")          
+            td.appendChild(edit)
+            edit.onclick = function() { editData(tr) }
+
+            var hapus = document.createElement("button")
+            hapus.innerHTML = "Hapus"
+            hapus.setAttribute("class", "btn btn-default")
+            td.appendChild(hapus)
+            hapus.onclick = function() { hapusData(tr) }
+
+            tr.appendChild(td)
+
+            return tr
+        }
+
+        function hapusData(element) {
+            if (confirm("Are you sure?"))
+                element.remove()
+
+        }
+
+        function resetForm() {
+            document.querySelector("form").reset()
+            document.querySelector("#btnUpdate").style.display = "none"
+            document.querySelector('#psw').focus()
+        }
+
+        function editData(element) {
+        	var psw = document.querySelector('#psw')
+			var nama = document.querySelector("#nama")
+			var alamat = document.querySelector("#alamat")
+			var telepon = document.querySelector('#telepon')
+
+            children = element.querySelectorAll("td")
+             psw.value = children[0].innerHTML
+            nama.value = children[1].innerHTML
+            alamat.value = children[2].innerHTML
+            telepon.value = children[3].innerHTML
+
+            psw.focus()
+
+            var btnUpdate = document.querySelector("#btnUpdate")
+            btnUpdate.style.display = "inline"
+            btnUpdate.onclick = function() { updateData(element) }
+        }
+
+        function updateData(element) {
+        	var psw = document.querySelector('#psw').value
+			var nama = document.querySelector("#nama").value
+			var alamat = document.querySelector("#alamat").value
+			var telepon = document.querySelector('#telepon').value
+
+            tr = newRow(psw, nama, alamat, telepon)
+
+            table = document.querySelector("#kontak1")
+			table.querySelector("tbody").replaceChild(tr, element)
+
+            resetForm()
+        }
+
+		function tambahData() {
+			// baca input
+			var psw = document.querySelector('#psw').value
+			var nama = document.querySelector("#nama").value
+			var alamat = document.querySelector("#alamat").value
+			var telepon = document.querySelector('#telepon').value
+
+            tr = newRow(psw, nama, alamat, telepon)
+			
+			// insert ke table
+			var table = document.querySelector("#kontak")
+			table.querySelector("tbody").appendChild(tr)
+
+            resetForm()
+		}
+	</script>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script>
+        function newCol1(value) {
+            var element = document.createElement("td")
+            element.innerHTML = value
+            return element
+        }
+
+        function newRow1(name, email, comments) {
+			// tambahkan tr baru dan td baru
+			var tr = document.createElement("tr")
+			
+			tr.appendChild(newCol(name))
+			td = document.createElement("td")
+			tr.appendChild(newCol(email))
+			td = document.createElement("td")
+			tr.appendChild(newCol(comments))
+
+            // tambahkan tombol
+            td = document.createElement("td")
+            var edit = document.createElement("button")
+             edit.innerHTML = "Edit"
+            edit.setAttribute("class", "btn btn-default")          
+            td.appendChild(edit)
+            edit.onclick = function() { editData1(tr) }
+
+            var hapus = document.createElement("button")
+            hapus.innerHTML = "Hapus"
+            hapus.setAttribute("class", "btn btn-default")
+            td.appendChild(hapus)
+            hapus.onclick = function() { hapusData1(tr) }
+
+            tr.appendChild(td)
+
+            return tr
+        }
+
+        function hapusData1(element) {
+            if (confirm("Are you sure?"))
+                element.remove()
+           
+        }
+
+        function resetForm1() {
+            document.querySelector("form1").reset()
+            document.querySelector("#btnUpdate1").style.display = "none"
+            document.querySelector('#name').focus()
+        }
+
+        function editData1(element) {
+			var name= document.querySelector("#name")
+			var email = document.querySelector("#email")
+			var comments = document.querySelector('#comments')
+
+            children = element.querySelectorAll("td")
+             
+            name.value = children[0].innerHTML
+            email.value = children[1].innerHTML
+           comments.value = children[2].innerHTML
+
+            psw.focus()
+
+            var btnUpdate1 = document.querySelector("#btnUpdate1")
+            btnUpdate1.style.display = "inline"
+            btnUpdate1.onclick = function() { updateData1(element) }
+        }
+
+        function updateData1(element) {
+        	
+			var name= document.querySelector("#name").value
+			var email = document.querySelector("#email").value
+			var comments = document.querySelector('#comments').value
+
+            tr = newRow(name, email,comments)
+
+            table = document.querySelector("#kontak1")
+			table.querySelector("tbody").replaceChild(tr, element)
+
+            resetForm()
+        }
+
+		function tambahData1() {
+			// baca input
+			var name= document.querySelector("#name").value
+			var email = document.querySelector("#email").value
+			var comments = document.querySelector('#comments').value
+
+            tr = newRow(name, email, comments)
+			
+			// insert ke table
+			var table = document.querySelector("#kontak1")
+			table.querySelector("tbody").appendChild(tr)
+
+            resetForm1()
+		}
+	</script>
 </body>
 </html>
