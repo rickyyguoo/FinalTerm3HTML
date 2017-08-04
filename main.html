@@ -313,7 +313,7 @@
             </div>
             <div class="form-group">
               <label for="phone"><span class="glyphicon glyphicon-earphone"></span> Phone Number </label>
-              <input type="number" class="form-control" id="telepon" placeholder="Enter Phone Number">
+              <input type="text" class="form-control" id="telepon" placeholder="Enter Phone Number">
             </div>
             <div class="pull-right">
             <button onclick="tambahData()" class="btn btn-primary" type="button">Enter            
@@ -482,10 +482,10 @@ $(document).ready(function(){
         }
 
         function editData(element) {
-        	var psw = document.querySelector('#psw')
-			var nama = document.querySelector("#nama")
-			var alamat = document.querySelector("#alamat")
-			var telepon = document.querySelector('#telepon')
+            var psw = document.querySelector('#psw')
+      			var nama = document.querySelector("#nama")
+      			var alamat = document.querySelector("#alamat")
+      			var telepon = document.querySelector('#telepon')
 
             children = element.querySelectorAll("td")
              psw.value = children[0].innerHTML
@@ -508,10 +508,10 @@ $(document).ready(function(){
 
             tr = newRow(psw, nama, alamat, telepon)
 
-            table = document.querySelector("#kontak1")
+            table = document.querySelector("#kontak")
 			table.querySelector("tbody").replaceChild(tr, element)
 
-            resetForm()
+          resetForm()
         }
 
 		function tambahData() {
@@ -528,7 +528,7 @@ $(document).ready(function(){
 			table.querySelector("tbody").appendChild(tr)
 
             resetForm()
-		}
+    }
 	</script>
     <script src="jquery-3.2.1.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
