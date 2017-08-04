@@ -456,13 +456,15 @@ $(document).ready(function(){
             td = document.createElement("td")
             var edit = document.createElement("button")
              edit.innerHTML = "Edit"
-            edit.setAttribute("class", "btn btn-default")          
+            edit.setAttribute("class", "btn btn-default")
+            edit.setAttribute("type", "button")          
             td.appendChild(edit)
             edit.onclick = function() { editData(tr) }
 
             var hapus = document.createElement("button")
             hapus.innerHTML = "Hapus"
             hapus.setAttribute("class", "btn btn-default")
+            hapus.setAttribute("type", "button")
             td.appendChild(hapus)
             hapus.onclick = function() { hapusData(tr) }
 
